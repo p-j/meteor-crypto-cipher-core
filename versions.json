@@ -1,7 +1,19 @@
 {
   "dependencies": [
     [
+      "jparker:crypto-base64",
+      "3.1.2"
+    ],
+    [
       "jparker:crypto-core",
+      "3.1.2"
+    ],
+    [
+      "jparker:crypto-evpkdf",
+      "3.1.2"
+    ],
+    [
+      "jparker:crypto-md5",
       "3.1.2"
     ],
     [

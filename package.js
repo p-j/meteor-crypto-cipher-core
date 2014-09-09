@@ -6,13 +6,28 @@ Package.describe({
 
 Package.onUse(function(api) {
   api.versionsFrom('METEOR@0.9.1.1');
-  api.use('jparker:crypto-core@3.1.2', ['client', 'server']);
-	api.imply('jparker:crypto-core', ['client', 'server']);
-  api.addFiles(['lib/cipher-core.js', 'lib/evpkdf.js']);
+  api.use([
+    'jparker:crypto-core@3.1.2',
+  	'jparker:crypto-base64@3.1.2',
+  	'jparker:crypto-evpkdf@3.1.2'
+	], ['client', 'server']);
+
+	api.imply([
+    'jparker:crypto-core',
+    'jparker:crypto-base64',
+  	'jparker:crypto-evpkdf'
+  ], ['client', 'server']);
+
+  api.addFiles(['lib/cipher-core.js']);
 });
 
-// Package.onTest(function(api) {
-//   api.use('tinytest');
-//   api.use('jparker:crypto-cipher-core');
-//   api.addFiles('jparker:crypto-cipher-core-tests.js');
-// });
+Package.onTest(function (api) {
+	api.use([
+		'jparker:crypto-core@3.1.2',
+		'jparker:crypto-cipher-core@3.1.2',
+		'jparker:crypto-base64@3.1.2',
+		'tinytest'
+	], ['client', 'server']);
+
+	api.addFiles('tests/tests.js', ['client', 'server']);
+});
